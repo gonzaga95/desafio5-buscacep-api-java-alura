@@ -12,20 +12,19 @@ public class BuscadorCEP {
 
         URI url = URI.create("https://viacep.com.br/ws/" + cep + "/json/");
 
-        HttpClient client = HttpClient.newHttpClient();
-
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(url)
                 .build();
 
-        HttpResponse<String> response = null;
         try {
-                response = client
-                        .send(request, HttpResponse.BodyHandlers.ofString());
-        } catch (IOException | InterruptedException e) {
+            HttpResponse<String> response = HttpClient.
+                    newHttpClient()
+                    .send(request, HttpResponse.BodyHandlers.ofString());
+
+            return new Gson().fromJson(response.body(), Endereco.class);
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
-        return new Gson().fromJson(response.body(), Endereco.class);
     }
 }
