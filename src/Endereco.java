@@ -5,6 +5,4 @@ public record Endereco(
         String localidade,
         String uf,
         String ibge
-) {
-
-}
+){}
