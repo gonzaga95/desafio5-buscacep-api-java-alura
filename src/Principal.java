@@ -7,7 +7,6 @@ public class Principal {
         Scanner scanner = new Scanner(System.in);
         String cep;
 
-
         try {
             System.out.println("Digite um CEP para busca: ");
             cep = scanner.nextLine();
